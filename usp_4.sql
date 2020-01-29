@@ -5,6 +5,8 @@ GO
 UPDATE Book_Loans
 SET DateOut = CAST(GETDATE()-30 AS DATE), DateDue = CAST(GETDATE() AS DATE)
 WHERE CardNo = 1;
+
+(Also in the data loading sql file)
 */
 
 /* Retrieve all the Books due today at the Sharpstown Branch */

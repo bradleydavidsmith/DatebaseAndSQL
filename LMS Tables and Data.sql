@@ -216,3 +216,9 @@ VALUES
 	(19,3,4, '2013-10-14', '2013-11-14'),
 	(20,3,4, '2013-10-14', '2013-11-14')
 ;
+
+-- Make some of the due dates 'today', so ups_4.sql will return data.
+UPDATE Book_Loans
+	SET DateOut = CAST(GETDATE()-30 AS DATE), DateDue = CAST(GETDATE() AS DATE)
+	WHERE CardNo = 1
+;
