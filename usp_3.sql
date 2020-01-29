@@ -1,13 +1,13 @@
 USE db_LibraryManagement
 GO
 
-/* Create a Procedure that counts the number copies branch owns
-   of the book 'The Lost Tribe'.
+/* Create a Procedure that retrieves all borrowers that do
+	 not have books checked out
 */
-CREATE PROC LostTribesPerBranch
+CREATE PROC NoBooksCheckedOut
 AS
-SELECT  b.Title, lb.BranchName, bc.Number_Of_Copies FROM Library_Branch lb
-LEFT JOIN Book_Copies bc ON bc.BranchID = lb.BranchID 
-LEFT JOIN Books b ON b.BookID = BC.BookID 
-WHERE b.Title = 'The Lost Tribe'
+	SELECT b.Name FROM Borrower b
+	WHERE b.CardNo NOT IN (SELECT DISTINCT CardNo FROM Book_Loans)
+
+
 
